@@ -6,7 +6,7 @@ info:
 servers:
   - url: 'https'
 paths:
-  /generate:
+  /promptToSandbox:
     post:
       summary: Сгенерировать файл-представление для написанной задачи
       operationId: generate
@@ -18,7 +18,13 @@ paths:
         required: true
       responses:
         '201':
-          description: Эталонное решение прошло все тесты
+          description: Эталонное решение прошло все тесты и из песочницы вернулись сгенерированные тесты
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
         '400':
           description: Эталонное решение либо не прошло все тесты, либо при выполнении в песочнице возникла ошибка
           content:
@@ -65,9 +71,6 @@ components:
           type: array
           maxItems: 100
           items:
-            type: object
-            properties:
-              expected:
-                type: string
+            type: string
         testGeneratorProgram:
           type: string
