@@ -16,7 +16,7 @@ public class TasksRpcController {
 
     @PostMapping("/runs")
     public ResponseEntity<?> submitRun(@RequestBody TaskRun taskRun) {
-        System.out.println(taskRun);
+        jobeService.runs(taskRun);
         return ResponseEntity.ok("working");
     }
 }
