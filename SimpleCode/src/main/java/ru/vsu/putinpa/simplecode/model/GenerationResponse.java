@@ -1,4 +1,11 @@
 package ru.vsu.putinpa.simplecode.model;
 
-public class RunResponse {
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class GenerationResponse {
+    private List<Testcase> testcases;
+    private List<String> errors;
 }
